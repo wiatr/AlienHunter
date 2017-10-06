@@ -89,6 +89,7 @@ var Game = function(){
               document.querySelector('#over').classList.remove('invisible')
               board.style.display = "none";
               blinkE.style.display = "block";
+              end.style.display = "block";
                 }
         }
         this.startGame = function(){

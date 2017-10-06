@@ -73,13 +73,18 @@
  var blink = document.getElementById('blink');
  var blinkA = document.getElementById('blinkA');
  var board = document.getElementById("board");
+ var intro = document.querySelector(".intro");
+ var intro1 = document.querySelector(".intro1");
+ var end = document.getElementById("end");
 
  document.addEventListener("keyup", function(event){
     event.preventDefault();
          if (event.keyCode == 32) {
-                blink.style.display = "none"
-                blinkA.style.display = "none"
-                board.style.display = "block"
+                blink.style.display = "none";
+                blinkA.style.display = "none";
+                intro.style.display = "none";
+                intro1.style.display = "none";
+                board.style.display = "block";
 
                 var game = new Game();
                 game.showFurry();
@@ -190,6 +195,7 @@ var Game = function(){
               document.querySelector('#over').classList.remove('invisible')
               board.style.display = "none";
               blinkE.style.display = "block";
+              end.style.display = "block";
                 }
         }
         this.startGame = function(){
