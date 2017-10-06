@@ -18,7 +18,12 @@ body {
   animation: blinker 1.5s linear infinite;
   color: white;
   font-size: 3em;
-  padding-top: 0.5em;
+} 
+
+p.intro {
+  font-size: 1.25em;
+  text-align: center;
+  color: white;
 }
 
 @keyframes blinker {
