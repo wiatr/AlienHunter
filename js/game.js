@@ -81,24 +81,29 @@ var Game = function(){
         }
 
         this.gameOver = function() {
-         if (this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9) {
-             clearInterval(this.move);
-             self.hideVisibleFurry();
-
-            document.querySelector('#board').classList.add('invisible');
-              document.querySelector('#over').classList.remove('invisible')
-              board.style.display = "none";
-              blinkE.style.display = "block";
-              end.style.display = "block";
-                }
+            var findFurry = document.querySelector('.furry');
+            if (this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9) {
+                clearInterval(this.move);
+                self.hideVisibleFurry();
+   
+               document.querySelector('#board').classList.add('invisible');
+                 document.querySelector('#over').classList.remove('invisible')
+                 board.style.display = "none";
+                 blinkE.style.display = "block";
+                 end.style.display = "block";
+                 self.moveFurry = function() {
+                   self.furry.x = self.furry.x
+                   self.furry.y = self.furry.y
+           }
         }
-        this.startGame = function(){
-            this.idSetInterval = setInterval(function() {
-            self.moveFurry()
-            },250);
         }
-
-    };
+           this.startGame = function(){
+               this.idSetInterval = setInterval(function() {
+               self.moveFurry()
+               },250);
+           }
+   
+       };
 
 
 
