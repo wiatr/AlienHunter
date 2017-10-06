@@ -68,18 +68,32 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var Game = __webpack_require__(1);
+ var Game = __webpack_require__(1);
 
-    var game = new Game();
-    game.showFurry();
-    game.showCoin();
-    game.startGame();
-    game.moveFurry();
+ var blink = document.getElementById('blink');
+ var blinkA = document.getElementById('blinkA');
+ var board = document.getElementById("board");
 
-    document.addEventListener('keydown', function(event){
-    game.turnFurry(event);
+ document.addEventListener("keyup", function(event){
+    event.preventDefault();
+         if (event.keyCode == 32) {
+                blink.style.display = "none"
+                blinkA.style.display = "none"
+                board.style.display = "block"
+
+                var game = new Game();
+                game.showFurry();
+                game.showCoin();
+                game.startGame();
+                game.moveFurry();
+            
+                document.addEventListener('keydown', function(event){
+                game.turnFurry(event);
+             });
+        } if (event.keyCode == 27) {
+            window.location = "index.html"
+        }
  });
-
 
 /***/ }),
 /* 1 */
@@ -173,7 +187,9 @@ var Game = function(){
              self.hideVisibleFurry();
 
             document.querySelector('#board').classList.add('invisible');
-      		document.querySelector('#over').classList.remove('invisible')
+              document.querySelector('#over').classList.remove('invisible')
+              board.style.display = "none";
+              blinkE.style.display = "block";
                 }
         }
         this.startGame = function(){
@@ -187,7 +203,6 @@ var Game = function(){
 
 
 module.exports = Game;
-
 
 /***/ }),
 /* 2 */

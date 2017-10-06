@@ -86,7 +86,9 @@ var Game = function(){
              self.hideVisibleFurry();
 
             document.querySelector('#board').classList.add('invisible');
-      		document.querySelector('#over').classList.remove('invisible')
+              document.querySelector('#over').classList.remove('invisible')
+              board.style.display = "none";
+              blinkE.style.display = "block";
                 }
         }
         this.startGame = function(){
