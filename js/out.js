@@ -77,6 +77,7 @@
  var intro1 = document.querySelector(".intro1");
  var end = document.getElementById("end");
 
+
  document.addEventListener("keyup", function(event){
     event.preventDefault();
          if (event.keyCode == 32) {
@@ -90,14 +91,16 @@
                 game.showFurry();
                 game.showCoin();
                 game.startGame();
-                game.moveFurry();
-            
+               
                 document.addEventListener('keydown', function(event){
-                game.turnFurry(event);
-             });
+                    game.turnFurry(event);
+                 });
+            
+               
         } if (event.keyCode == 27) {
             window.location = "index.html"
-        }
+        } 
+
  });
 
 /***/ }),
@@ -114,6 +117,7 @@ var Game = function(){
     this.furry = new Furry()
     this.coin = new Coin ()
     this.score = 0;
+    this.speed = 270;
 
     this.index = function(x,y) {
         return x + (y * 10);
@@ -129,8 +133,8 @@ var Game = function(){
 
         if (findFurry) {
                 findFurry.classList.remove('furry');
-            }
-        }
+        }   
+    }
 
     this.showCoin = function  (){
             this.board[ this.index(this.coin.x,this.coin.y) ].classList.add('coin');
@@ -146,7 +150,7 @@ var Game = function(){
              self.furry.y = self.furry.y + 1;
          } else if ( self.furry.direction === 'down') {
              self.furry.y = self.furry.y - 1;
-         }
+         } 
 
          this.gameOver();
          self.showFurry();
@@ -186,31 +190,36 @@ var Game = function(){
            }
         }
 
+       
         this.gameOver = function() {
             var findFurry = document.querySelector('.furry');
             if (this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9) {
                 clearInterval(this.move);
                 self.hideVisibleFurry();
+                this.idSetInterval = clearInterval; 
    
                document.querySelector('#board').classList.add('invisible');
                  document.querySelector('#over').classList.remove('invisible')
                  board.style.display = "none";
                  blinkE.style.display = "block";
                  end.style.display = "block";
+                 this.speed = 5000;
                  self.moveFurry = function() {
                    self.furry.x = self.furry.x
                    self.furry.y = self.furry.y
-           }
-        }
+                }
+                this.showFurry = function(){
+                    this.hideVisibleFurry();
+                };
+            } 
         }
            this.startGame = function(){
                this.idSetInterval = setInterval(function() {
                self.moveFurry()
-               },250);
+               },this.speed);
            }
    
        };
-
 
 
 module.exports = Game;

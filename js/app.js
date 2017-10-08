@@ -8,6 +8,7 @@
  var intro1 = document.querySelector(".intro1");
  var end = document.getElementById("end");
 
+
  document.addEventListener("keyup", function(event){
     event.preventDefault();
          if (event.keyCode == 32) {
@@ -21,12 +22,14 @@
                 game.showFurry();
                 game.showCoin();
                 game.startGame();
-                game.moveFurry();
-            
+               
                 document.addEventListener('keydown', function(event){
-                game.turnFurry(event);
-             });
+                    game.turnFurry(event);
+                 });
+            
+               
         } if (event.keyCode == 27) {
             window.location = "index.html"
-        }
+        } 
+
  });

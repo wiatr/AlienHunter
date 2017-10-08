@@ -8,19 +8,20 @@ body {
     background-image: url('../images/space.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     width: 100%;
     height: 100%; 
     font-family: 'VT323', monospace;
 }
 
-#blink, #blinkA, #blinkE {
+#blink, #blinkA, #blinkE, #blinkM {
   text-align: center;
   animation: blinker 1.5s linear infinite;
   color: white;
   font-size: 3em;
 } 
 
-p.intro, p.intro1, #end {
+p.intro, p.intro1, #end, .mobile {
   font-size: 1.25em;
   text-align: center;
   color: white;
@@ -90,7 +91,7 @@ section#over {
   top: 0;
   z-index: 1;
   padding: 10px;
-  background-color: rgba(121, 120, 120, 0.25);
+  background-color: rgba(121, 120, 120, 0.5);
 }
 
 section#over pre {
@@ -102,6 +103,24 @@ section#over pre {
   color: brown;
 }
 
-.invisible, #board, #blinkE, #end {
+.invisible, #board, #blinkE, #end, .mobile, #blinkM {
   display: none;
+}
+
+@media (max-width: 980px) {
+  #blink, #blinkA, #blinkE, p#end, .intro1, .intro {
+    display: none;
+  }
+  .mobile, #blinkM {
+    display: block;
+  }
+
+  p.intro, p.intro1, .mobile {
+    padding-top: 1em;
+    font-size: 1em;
+  }
+  #blinkM {
+    padding-top: 1em;
+    font-size: 1.25em;
+  }
 }
