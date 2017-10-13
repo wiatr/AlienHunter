@@ -3,3 +3,5 @@ package.json
 screens/*
 js/*
 !js/out.js
+gulpfile.js
+.gitignore

@@ -91,7 +91,7 @@ section#over {
   top: 0;
   z-index: 1;
   padding: 10px;
-  background-color: rgba(121, 120, 120, 0.5);
+  background-color: rgba(121, 120, 120);
 }
 
 section#over pre {
